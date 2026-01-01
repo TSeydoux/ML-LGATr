@@ -33,8 +33,8 @@ def trainingPlots(directory):
 
     # Loss plot
     fig, ax = plt.subplots(figsize=(12, 8))
-    plt.plot(epochs, train_loss, label='Training Loss', color="#2166ac", linestyle=":", linewidth=1, marker='o')
-    plt.plot(epochs, val_loss, label='Validation Loss', color="#b2182b", linewidth=1, marker='o')
+    plt.plot(epochs, train_loss, label='Training Loss', color="#2166ac", linestyle=":", linewidth=1, marker='o', markersize=3)   # , marker='o'
+    plt.plot(epochs, val_loss, label='Validation Loss', color="#b2182b", linewidth=1, marker='o', markersize=3)   # , marker='o'
     ax.set_xlabel('Epoch', fontsize=20)
     ax.set_ylabel('Loss', fontsize=20)
     ax.legend(fontsize=20)
@@ -45,8 +45,8 @@ def trainingPlots(directory):
 
     # Accuracy plot
     fig, ax = plt.subplots(figsize=(12, 8))
-    plt.plot(epochs, train_acc, label='Training Accuracy',color="#2166ac", linestyle=":", linewidth=1, marker='o')
-    plt.plot(epochs, val_acc, label='Validation Accuracy', color='red', linewidth=1, marker='o')
+    plt.plot(epochs, train_acc, label='Training Accuracy',color="#2166ac", linestyle=":", linewidth=1, marker='o', markersize=3)   # , marker='o'
+    plt.plot(epochs, val_acc, label='Validation Accuracy', color='red', linewidth=1, marker='o', markersize=3)   # , marker='o'
     ax.set_xlabel('Epoch', fontsize=20)
     ax.set_ylabel('Accuracy (%)', fontsize=20)
     ax.legend(fontsize=20)
@@ -87,7 +87,7 @@ def evaluationPlots(directory):
     # Create the plot
     fig, ax = plt.subplots(figsize=(12, 8))
     ax.hist(sig_scores, bins=bins_sig, density=True, color="#b2182b", histtype='step', linewidth=1.5)   # Plots outline of the signal; 'density=True' means that the area under the curve is set to 1
-    ax.hist(sig_scores, bins=bins_sig, density=True, color="#b2182b", histtype='stepfilled', alpha=0.3, linewidth=1.5, label="$B_s \\to \\tau^+ \\tau$")   # Fills the area of the signal
+    ax.hist(sig_scores, bins=bins_sig, density=True, color="#b2182b", histtype='stepfilled', alpha=0.3, linewidth=1.5, label="$B_s \\to \\tau^+ \\tau^-$")   # Fills the area of the signal
     ax.hist(bkg_scores, bins=bins_sig, density=True, color="#2166ac", histtype='step', linewidth=1.5, label="Inc. $Z^0 \\to b\\bar{b}$")
 
     ax.set_xlabel("Score", fontsize=20)
@@ -123,9 +123,9 @@ def evaluationPlots(directory):
     plt.plot(cut_vals, eff_sig, color="#b2182b", label="$B_s \\to \\tau^+ \\tau^-$", linewidth=2)
     plt.plot(cut_vals, eff_bkg, color="#2166ac", linestyle=":", label="Inc. $Z^0 \\to b\\bar{b}$", linewidth=2)
 
-    plt.xlabel("Score", fontsize=20)
+    plt.xlabel("1 - Score", fontsize=20)
     plt.ylabel("Efficiency", fontsize=20)
-    plt.legend(loc="lower left", fontsize=20)
+    plt.legend(loc="best", fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=15)
     plt.xlim(0, 4.1)
     plt.xticks([0, 1, 2, 3, 4, 5], ["$10^0$", "$10^{-1}$", "$10^{-2}$", "$10^{-3}$", "$10^{-4}$", "$10^{-5}$"])   # Might want to change the number of ticks to fit to the data
@@ -158,7 +158,7 @@ def ROC(directory):
     roc_auc = auc(fpr, tpr)
 
     # Create the plot
-    fig, ax = plt.subplots(figsize=(12, 8))
+    fig, ax = plt.subplots(figsize=(10, 10))
     plt.plot(fpr, tpr, lw=1.5, color="#2166ac", label=f'ROC (AUC = {roc_auc:.3f})')
     plt.plot([0., 1.], [0., 1.], linestyle="--", color="gray", label='50/50')   # Plot the baseline for a random classifier
 
@@ -178,7 +178,7 @@ def ROC(directory):
 
 
 if __name__ == "__main__":
-    directory = "/afs/cern.ch/work/t/thseydou/public/LGATr/trained_models/LGATr_small_model_30"
+    directory = "/afs/cern.ch/work/t/thseydou/public/LGATr/trained_models/LGATr_small_model_40"
 
     trainingPlots(directory=directory)
     evaluationPlots(directory=directory)

@@ -113,13 +113,13 @@ def preprocessingPlots(preprocessed_dir):
     # Plotting loop
     for var in var_norm:
         ## If not already normalized by the preprocessing function, normalize here:
-        # mean = var_norm[var]["mean"]
-        # std = var_norm[var]["std"]
-        # log = var_norm[var]["log"]
+        mean = var_norm[var]["mean"]
+        std = var_norm[var]["std"]
+        log = var_norm[var]["log"]
         
-        # if var not in df_train.columns:
-        #     print(f"Warning: {var} not found in DataFrame.")
-        #     continue
+        if var not in df_train.columns:
+            print(f"Warning: {var} not found in DataFrame.")
+            continue
 
         # if log:
         #     df_train[var] = (np.log(df_train[var]) - mean) / std
@@ -128,12 +128,23 @@ def preprocessingPlots(preprocessed_dir):
 
         plt.figure(figsize=(8, 6))
         plt.hist(df_train[var], bins=200, histtype='step', color='blue', alpha=0.8)
-        plt.title(f'Distribution of {var}')
-        plt.xlabel(var)
-        plt.ylabel('Counts')
+
+        title = var
+        if log:
+            title = "log(" + title + ")"
+        if mean != 0:
+            title += " - " + str(mean)
+            if std != 1:
+                title = "(" + title + ") / " + str(std)
+        elif mean == 0 and std != 1:
+            title += " / " + str(std)
+        
+        plt.title(f'Distribution of: {title}', fontsize=16)
+        plt.xlabel("Value", fontsize=14)
+        plt.ylabel('Counts', fontsize=14)
         plt.grid(True)
         plt.tight_layout()
-        plt.savefig(os.path.join(output_dir, f"dist_{var}.png"))
+        plt.savefig(os.path.join(output_dir, f"{var}_dist.png"))
         plt.close()
 
 

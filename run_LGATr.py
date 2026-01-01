@@ -21,10 +21,10 @@ def main():
     
     ####################################### All the options to configure before training ##########################################
     
-    model_used = small_model   # Model you want to use, check 'LGATr_config.py' for details
-    model_name = "small_model"   # Name of the model (free but better to keep the name of the variable)
-    num_epochs = 100   # Nnumber of epochs to train
-    patience = 100   # Number of epochs with no progress before early stop
+    model_used = full_var_model   # Model you want to use, check 'LGATr_config.py' for details
+    model_name = "full_var_model"   # Name of the model (free but better to keep the name of the variable)
+    num_epochs = 40   # Nnumber of epochs to train
+    patience = num_epochs   # Number of epochs with no progress before early stop
     
     directory = f"/afs/cern.ch/work/t/thseydou/public/LGATr/trained_models/LGATr_{model_name}_{num_epochs}"   # Directory of the model
     preprocessed_dir = "/afs/cern.ch/work/t/thseydou/public/LGATr/preprocessed_data"   # Directory where to find the preprocessed data
