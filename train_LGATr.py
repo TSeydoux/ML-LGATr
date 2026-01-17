@@ -1,4 +1,4 @@
-### Training and initial validation of the LGATr model
+### Training and initial validation of the LGATr model. It saves results of the testing sample directly in a pickle file to improve efficiency. 
 
 
 
