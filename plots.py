@@ -1,5 +1,4 @@
 ### Create all relevant plots to evaluate/monitor progress of the model
-### Paths may need to be modified in the main when ran directly
 
 
 
