@@ -1,4 +1,4 @@
-### Config file for LGATr training and evaluation
+### Config file for LGATr. List of variables used for training. These variables are extracted from the ROOT files by the preprocessing() function defined in 'data_prep.py'. Includes a dictionnary to rescale the variables and different implementations of the LGATr model.
 
 
 
@@ -77,36 +77,36 @@ alt_scalar_vars = ["Tau23PiCandidates_x", "Tau23PiCandidates_y", "Tau23PiCandida
 
 # Normalization parameters for each variable
 var_norm = {
-    "TauCand1_x": {"mean": 0.0, "std": 2.0, "log": False},              "TauCand2_x": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
-    "TauCand1_y": {"mean": 0.0, "std": 2.0, "log": False},              "TauCand2_y": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
-    "TauCand1_z": {"mean": 0.0, "std": 2.0, "log": False},              "TauCand2_z": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0 and 1000.0
-    "TauCand1_chi2": {"mean": 0.0, "std": 350.0, "log": False},         "TauCand2_chi2": {"mean": 0.0, "std": 2500.0, "log": False}, # 350.0 instead of 250.0
-    "TauCand1_thrustangle": {"mean": 0.0, "std": 1.0, "log": False},    "TauCand2_thrustangle": {"mean": 0.0, "std": 1.0, "log": False}, # mean of 0.0 isntead of -3.0
+    "TauCand1_x": {"mean": 0.0, "std": 2.0, "log": False},              "TauCand2_x": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_y": {"mean": 0.0, "std": 2.0, "log": False},              "TauCand2_y": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_z": {"mean": 0.0, "std": 2.0, "log": False},              "TauCand2_z": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_chi2": {"mean": 0.0, "std": 350.0, "log": False},         "TauCand2_chi2": {"mean": 0.0, "std": 2500.0, "log": False},
+    "TauCand1_thrustangle": {"mean": 0.0, "std": 1.0, "log": False},    "TauCand2_thrustangle": {"mean": 0.0, "std": 1.0, "log": False},
     
     "TauCand1_px": {"mean": 0.0, "std": 5.0, "log": False},             "TauCand2_px": {"mean": 0.0, "std": 5.0, "log": False},
     "TauCand1_py": {"mean": 0.0, "std": 5.0, "log": False},             "TauCand2_py": {"mean": 0.0, "std": 5.0, "log": False},
     "TauCand1_pz": {"mean": 0.0, "std": 5.0, "log": False},             "TauCand2_pz": {"mean": 0.0, "std": 5.0, "log": False},
     "TauCand1_p": {"mean": 15.0, "std": 3.0, "log": False},             "TauCand2_p": {"mean": 15.0, "std": 3.0, "log": False}, # never used when tau=True
-    "TauCand1_m": {"mean": 0.0, "std": 1.0, "log": False},              "TauCand2_m": {"mean": 0.0, "std": 1.0, "log": False}, # mean of 0.0 instead of 1.0, std of 1.0 instead of 0.5
+    "TauCand1_m": {"mean": 0.0, "std": 1.0, "log": False},              "TauCand2_m": {"mean": 0.0, "std": 1.0, "log": False},
     "TauCand1_q": {"mean": 0.0, "std": 1.0, "log": False},              "TauCand2_q": {"mean": 0.0, "std": 1.0, "log": False},
 
-    "TauCand1_pion1px": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion1px": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
-    "TauCand1_pion1py": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion1py": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
-    "TauCand1_pion1pz": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion1pz": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
+    "TauCand1_pion1px": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion1px": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_pion1py": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion1py": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_pion1pz": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion1pz": {"mean": 0.0, "std": 2.0, "log": False},
     "TauCand1_pion1q": {"mean": 0.0, "std": 1.0, "log": False},         "TauCand2_pion1q": {"mean": 0.0, "std": 1.0, "log": False},
     "TauCand1_pion1d0": {"mean": 0.0, "std": 1.0, "log": False},        "TauCand2_pion1d0": {"mean": 0.0, "std": 1.0, "log": False},
     "TauCand1_pion1z0": {"mean": 0.0, "std": 1.0, "log": False},        "TauCand2_pion1z0": {"mean": 0.0, "std": 1.0, "log": False},
 
-    "TauCand1_pion2px": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion2px": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
-    "TauCand1_pion2py": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion2py": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
-    "TauCand1_pion2pz": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion2pz": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
+    "TauCand1_pion2px": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion2px": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_pion2py": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion2py": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_pion2pz": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion2pz": {"mean": 0.0, "std": 2.0, "log": False},
     "TauCand1_pion2q": {"mean": 0.0, "std": 1.0, "log": False},         "TauCand2_pion2q": {"mean": 0.0, "std": 1.0, "log": False},
     "TauCand1_pion2d0": {"mean": 0.0, "std": 1.0, "log": False},        "TauCand2_pion2d0": {"mean": 0.0, "std": 1.0, "log": False},
     "TauCand1_pion2z0": {"mean": 0.0, "std": 1.0, "log": False},        "TauCand2_pion2z0": {"mean": 0.0, "std": 1.0, "log": False},
 
-    "TauCand1_pion3px": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion3px": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
-    "TauCand1_pion3py": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion3py": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
-    "TauCand1_pion3pz": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion3pz": {"mean": 0.0, "std": 2.0, "log": False}, # 2.0 instead of 3.0
+    "TauCand1_pion3px": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion3px": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_pion3py": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion3py": {"mean": 0.0, "std": 2.0, "log": False},
+    "TauCand1_pion3pz": {"mean": 0.0, "std": 2.0, "log": False},        "TauCand2_pion3pz": {"mean": 0.0, "std": 2.0, "log": False},
     "TauCand1_pion3q": {"mean": 0.0, "std": 1.0, "log": False},         "TauCand2_pion3q": {"mean": 0.0, "std": 1.0, "log": False},
     "TauCand1_pion3d0": {"mean": 0.0, "std": 1.0, "log": False},        "TauCand2_pion3d0": {"mean": 0.0, "std": 1.0, "log": False},
     "TauCand1_pion3z0": {"mean": 0.0, "std": 1.0, "log": False},        "TauCand2_pion3z0": {"mean": 0.0, "std": 1.0, "log": False},
