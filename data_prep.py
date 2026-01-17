@@ -1,7 +1,6 @@
 ### Initital data preparation and loading data for training and validation. The preprocessing() function prepares data, extracting training variables defined in 'LGATr_config.py', rescaling them, shuffling, splitting and then saving them in pickle files.
 ### This function has to be run before training, since it is not called by the train_LGATr() function. The 'preprocessingPlots()' function create plots of the training variables, allowing to check the quality of the applied rescaling. The data_prepper()
 ### function reconstructs multivector and scalar variables and is called in the train_LGATr() function.
-### Paths may need to be modified in the main when ran directly
 
 
 
