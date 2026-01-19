@@ -1,0 +1,15 @@
+executable = LGATr/run_LGATr.sh
+output     = LGATr/htcondor/LGATr_full_var_model_40_2.out
+error      = LGATr/htcondor/LGATr_full_var_model_40_2.err
+log        = LGATr/htcondor/LGATr_full_var_model_40_2.log
+
+transfer_input_files = LGATr
+
+request_CPUs = 1
+request_GPUs = 1
+request_memory = 12GB
+request_disk = 6GB
+gpus_minimum_memory = 12GB
++JobFlavour = "tomorrow"
+
+queue

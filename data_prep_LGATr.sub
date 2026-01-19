@@ -1,0 +1,13 @@
+executable = LGATr/data_prep.sh
+output     = LGATr/htcondor/LGATr_data_prep.out
+error      = LGATr/htcondor/LGATr_data_prep.err
+log        = LGATr/htcondor/LGATr_data_prep.log
+
+transfer_input_files = LGATr
+
+request_CPUs = 1
+request_memory = 8GB
+request_disk = 4GB
++JobFlavour = "espresso"
+
+queue
